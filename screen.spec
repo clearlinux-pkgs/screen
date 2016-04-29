@@ -4,7 +4,7 @@
 #
 Name     : screen
 Version  : 4.3.1
-Release  : 11
+Release  : 12
 URL      : http://mirrors.kernel.org/gnu/screen/screen-4.3.1.tar.gz
 Source0  : http://mirrors.kernel.org/gnu/screen/screen-4.3.1.tar.gz
 Summary  : No detailed summary available
