@@ -1,3 +1,32 @@
+Version 4.6.1 (10/07/2017):
+  * Fixes:
+	- problems with starting session in some cases
+	- parallel make install
+	- segfault when querying info on nonUTF locale
+
+Version 4.6.0 (28/06/2017):
+  * Update Unicode wide tables to 9.0
+  * Support more serial speeds
+  * Improved namespaces support
+  * Migrate from fifos to sockets
+  * Start viewing scrollback at first line of output
+
+Version 4.5.1 (25/02/2017):
+  * Fixes:
+	- logfile permissions problem (CVE-2017-5618)
+	- SunOS build problem (bug #50089)
+	- FreeBSD core dumps (bug #50143)
+
+Version 4.5.0 (10/12/2016):
+  * Allow specifying logfile's name via command line parameter '-L'
+  * Fixes:
+	- broken handling of "bind u digraph U+" (bug #48691)
+	- crash with long $TERM (bug #48983)
+	- crash when bumping blank window
+	- build for AIX (bug #49149)
+	- %x improperly separating arguments
+	- install with custom DESTDIR (bug #48370)
+
 Version 4.4.0 (19/06/2016):
   * Support up to 24 function keys
   * Fix runtime issues

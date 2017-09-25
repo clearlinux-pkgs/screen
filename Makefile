@@ -1,5 +1,5 @@
 PKG_NAME := screen
-URL := http://mirrors.kernel.org/gnu/screen/screen-4.4.0.tar.gz
-ARCHIVES :=
+URL := http://ftp.gnu.org/gnu/screen/screen-4.6.1.tar.gz
+
 
 include ../common/Makefile.common
