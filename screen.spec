@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xB708A383C53EF3A4 (amade@asmblr.net)
 #
 Name     : screen
-Version  : 4.6.1
-Release  : 15
-URL      : http://ftp.gnu.org/gnu/screen/screen-4.6.1.tar.gz
-Source0  : http://ftp.gnu.org/gnu/screen/screen-4.6.1.tar.gz
-Source99 : http://ftp.gnu.org/gnu/screen/screen-4.6.1.tar.gz.sig
+Version  : 4.6.2
+Release  : 16
+URL      : http://ftp.gnu.org/gnu/screen/screen-4.6.2.tar.gz
+Source0  : http://ftp.gnu.org/gnu/screen/screen-4.6.2.tar.gz
+Source99 : http://ftp.gnu.org/gnu/screen/screen-4.6.2.tar.gz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0+ GPL-3.0
@@ -49,14 +49,14 @@ doc components for the screen package.
 
 
 %prep
-%setup -q -n screen-4.6.1
+%setup -q -n screen-4.6.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1506367174
+export SOURCE_DATE_EPOCH=1508784318
 %configure --disable-static
 make V=1  %{?_smp_mflags}
 
@@ -68,7 +68,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1506367174
+export SOURCE_DATE_EPOCH=1508784318
 rm -rf %{buildroot}
 %make_install
 
@@ -78,7 +78,7 @@ rm -rf %{buildroot}
 %files bin
 %defattr(-,root,root,-)
 /usr/bin/screen
-/usr/bin/screen-4.6.1
+/usr/bin/screen-4.6.2
 
 %files data
 %defattr(-,root,root,-)
