@@ -6,7 +6,7 @@
 #
 Name     : screen
 Version  : 4.6.2
-Release  : 17
+Release  : 18
 URL      : http://ftp.gnu.org/gnu/screen/screen-4.6.2.tar.gz
 Source0  : http://ftp.gnu.org/gnu/screen/screen-4.6.2.tar.gz
 Source99 : http://ftp.gnu.org/gnu/screen/screen-4.6.2.tar.gz.sig
