@@ -6,10 +6,10 @@
 #
 Name     : screen
 Version  : 4.6.2
-Release  : 18
-URL      : http://ftp.gnu.org/gnu/screen/screen-4.6.2.tar.gz
-Source0  : http://ftp.gnu.org/gnu/screen/screen-4.6.2.tar.gz
-Source99 : http://ftp.gnu.org/gnu/screen/screen-4.6.2.tar.gz.sig
+Release  : 19
+URL      : https://mirrors.kernel.org/gnu/screen/screen-4.6.2.tar.gz
+Source0  : https://mirrors.kernel.org/gnu/screen/screen-4.6.2.tar.gz
+Source99 : https://mirrors.kernel.org/gnu/screen/screen-4.6.2.tar.gz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0+ GPL-3.0
@@ -56,9 +56,9 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1508810845
+export SOURCE_DATE_EPOCH=1520622161
 %configure --disable-static
-make V=1  %{?_smp_mflags}
+make  %{?_smp_mflags}
 
 %check
 export LANG=C
@@ -68,7 +68,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1508810845
+export SOURCE_DATE_EPOCH=1520622161
 rm -rf %{buildroot}
 %make_install
 
