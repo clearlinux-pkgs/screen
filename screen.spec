@@ -6,7 +6,7 @@
 #
 Name     : screen
 Version  : 4.6.2
-Release  : 19
+Release  : 20
 URL      : https://mirrors.kernel.org/gnu/screen/screen-4.6.2.tar.gz
 Source0  : https://mirrors.kernel.org/gnu/screen/screen-4.6.2.tar.gz
 Source99 : https://mirrors.kernel.org/gnu/screen/screen-4.6.2.tar.gz.sig
