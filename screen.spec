@@ -5,12 +5,12 @@
 # Source0 file verified with key 0xB708A383C53EF3A4 (amade@asmblr.net)
 #
 Name     : screen
-Version  : 4.7.0
-Release  : 24
-URL      : https://mirrors.kernel.org/gnu/screen/screen-4.7.0.tar.gz
-Source0  : https://mirrors.kernel.org/gnu/screen/screen-4.7.0.tar.gz
-Source1 : https://mirrors.kernel.org/gnu/screen/screen-4.7.0.tar.gz.sig
-Summary  : Full-screen window manager that multiplexes a physical terminal
+Version  : 4.8.0
+Release  : 25
+URL      : https://mirrors.kernel.org/gnu/screen/screen-4.8.0.tar.gz
+Source0  : https://mirrors.kernel.org/gnu/screen/screen-4.8.0.tar.gz
+Source1  : https://mirrors.kernel.org/gnu/screen/screen-4.8.0.tar.gz.sig
+Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0+ GPL-3.0
 Requires: screen-bin = %{version}-%{release}
@@ -20,23 +20,9 @@ Requires: screen-man = %{version}-%{release}
 BuildRequires : ncurses-dev
 
 %description
-From bargi@dots.physics.orst.edu Thu Aug 31 23:42 MET 1995
-Received: from faui45.informatik.uni-erlangen.de (root@faui45.informatik.uni-erlangen.de [131.188.34.45]) by immd4.informatik.uni-erlangen.de with ESMTP
-id XAA14775 (8.6.12/7.4f-FAU);; Thu, 31 Aug 1995 23:42:15 +0200
-Received: from dots.physics.orst.edu (bargi@dots.PHYSICS.ORST.EDU [128.193.96.106]) by uni-erlangen.de with ESMTP
-id XAA03048 (8.6.12/7.4f-FAU); for <screen@uni-erlangen.de>; Thu, 31 Aug 1995 23:42:03 +0200
-Received: (from bargi@localhost) by dots.physics.orst.edu (8.6.11/8.6.9) id OAA15627; Thu, 31 Aug 1995 14:41:47 -0700
-From: Hadi Bargi Rangin <bargi@dots.physics.orst.edu>
-Message-Id: <199508312141.OAA15627@dots.physics.orst.edu>
-To: screen@uni-erlangen.de
-Date: Thu, 31 Aug 1995 14:41:47 -0700 (PDT)
-Cc: bargi@dots.physics.orst.edu (Hadi Bargi Rangin)
-X-Mailer: ELM [version 2.4 PL24]
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset=US-ASCII
-Content-Length: 5423
-Status: RO
+[If you just got the screen package, it pays to read the file INSTALL]
+[This intro only describes the most common features to get you started]
+[A full description of all features is contained in the source package]
 
 %package bin
 Summary: bin components for the screen package.
@@ -73,15 +59,15 @@ man components for the screen package.
 
 
 %prep
-%setup -q -n screen-4.7.0
+%setup -q -n screen-4.8.0
+cd %{_builddir}/screen-4.8.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1570108925
-# -Werror is for werrorists
+export SOURCE_DATE_EPOCH=1581007704
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -101,10 +87,10 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1570108925
+export SOURCE_DATE_EPOCH=1581007704
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/screen
-cp COPYING %{buildroot}/usr/share/package-licenses/screen/COPYING
+cp %{_builddir}/screen-4.8.0/COPYING %{buildroot}/usr/share/package-licenses/screen/8624bcdae55baeef00cd11d5dfcfa60f68710a02
 %make_install
 
 %files
@@ -113,7 +99,7 @@ cp COPYING %{buildroot}/usr/share/package-licenses/screen/COPYING
 %files bin
 %defattr(-,root,root,-)
 /usr/bin/screen
-/usr/bin/screen-4.7.0
+/usr/bin/screen-4.8.0
 
 %files data
 %defattr(-,root,root,-)
@@ -137,7 +123,7 @@ cp COPYING %{buildroot}/usr/share/package-licenses/screen/COPYING
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/screen/COPYING
+/usr/share/package-licenses/screen/8624bcdae55baeef00cd11d5dfcfa60f68710a02
 
 %files man
 %defattr(0644,root,root,0755)
