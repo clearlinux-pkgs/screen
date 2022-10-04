@@ -1,8 +1,4 @@
-Configure miss: stropts.h usability
-Configure miss: stropts.h presence
 Configure miss: stropts.h
+Configure miss: utempter.h
 Configure miss: write
 Configure miss: xterm
-Configure miss: utempter.h usability
-Configure miss: utempter.h presence
-Configure miss: utempter.h
