@@ -7,7 +7,7 @@
 #
 Name     : screen
 Version  : 4.9.0
-Release  : 33
+Release  : 34
 URL      : https://mirrors.kernel.org/gnu/screen/screen-4.9.0.tar.gz
 Source0  : https://mirrors.kernel.org/gnu/screen/screen-4.9.0.tar.gz
 Source1  : https://mirrors.kernel.org/gnu/screen/screen-4.9.0.tar.gz.sig
