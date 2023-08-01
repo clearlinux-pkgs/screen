@@ -7,7 +7,7 @@
 #
 Name     : screen
 Version  : 4.9.0
-Release  : 30
+Release  : 33
 URL      : https://mirrors.kernel.org/gnu/screen/screen-4.9.0.tar.gz
 Source0  : https://mirrors.kernel.org/gnu/screen/screen-4.9.0.tar.gz
 Source1  : https://mirrors.kernel.org/gnu/screen/screen-4.9.0.tar.gz.sig
@@ -22,6 +22,7 @@ BuildRequires : ncurses-dev
 # Suppress stripping binaries
 %define __strip /bin/true
 %define debug_package %{nil}
+Patch1: backport-fix-missing-signal-sending-permission-check-on-faile.patch
 
 %description
 [If you just got the screen package, it pays to read the file INSTALL]
@@ -65,21 +66,22 @@ man components for the screen package.
 %prep
 %setup -q -n screen-4.9.0
 cd %{_builddir}/screen-4.9.0
+%patch -P 1 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1689811338
+export SOURCE_DATE_EPOCH=1690912511
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
-export FCFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
-export FFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
-export CXXFLAGS="$CXXFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export CFLAGS="$CFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -fstack-protector-strong -fzero-call-used-regs=used -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export FCFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -fstack-protector-strong -fzero-call-used-regs=used -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export FFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -fstack-protector-strong -fzero-call-used-regs=used -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export CXXFLAGS="$CXXFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -fstack-protector-strong -fzero-call-used-regs=used -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
 %autogen --disable-static
 make  %{?_smp_mflags}
 
@@ -91,7 +93,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1689811338
+export SOURCE_DATE_EPOCH=1690912511
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/screen
 cp %{_builddir}/screen-%{version}/COPYING %{buildroot}/usr/share/package-licenses/screen/8624bcdae55baeef00cd11d5dfcfa60f68710a02 || :
