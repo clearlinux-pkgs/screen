@@ -1,0 +1,1 @@
+Compiler:  initialization of ‘void (*)(WinMsgCond *, char *)’ from incompatible pointer type ‘void (*)(WinMsgCond *, int)’ [-Wincompatible-pointer-types]
