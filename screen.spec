@@ -9,7 +9,7 @@
 #
 Name     : screen
 Version  : 5.0.0
-Release  : 36
+Release  : 37
 URL      : https://mirrors.kernel.org/gnu/screen/screen-5.0.0.tar.gz
 Source0  : https://mirrors.kernel.org/gnu/screen/screen-5.0.0.tar.gz
 Source1  : https://mirrors.kernel.org/gnu/screen/screen-5.0.0.tar.gz.sig
