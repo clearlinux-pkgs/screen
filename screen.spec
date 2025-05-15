@@ -5,25 +5,21 @@
 # autospec version: v26
 # autospec commit: 99a7985
 #
-# Source0 file verified with key 0x910832974A92A11C (alexander_naumov@opensuse.org)
-#
 Name     : screen
-Version  : 5.0.0
-Release  : 37
-URL      : https://mirrors.kernel.org/gnu/screen/screen-5.0.0.tar.gz
-Source0  : https://mirrors.kernel.org/gnu/screen/screen-5.0.0.tar.gz
-Source1  : https://mirrors.kernel.org/gnu/screen/screen-5.0.0.tar.gz.sig
-Source2  : 910832974A92A11C.pkey
+Version  : 5.0.1
+Release  : 38
+URL      : https://mirrors.kernel.org/gnu/screen/screen-5.0.1.tar.gz
+Source0  : https://mirrors.kernel.org/gnu/screen/screen-5.0.1.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0+ GPL-3.0
 Requires: screen-bin = %{version}-%{release}
 Requires: screen-data = %{version}-%{release}
+Requires: screen-info = %{version}-%{release}
 Requires: screen-license = %{version}-%{release}
 Requires: screen-man = %{version}-%{release}
 BuildRequires : Linux-PAM-dev
 BuildRequires : buildreq-configure
-BuildRequires : gnupg
 BuildRequires : ncurses-dev
 # Suppress stripping binaries
 %define __strip /bin/true
@@ -52,6 +48,14 @@ Group: Data
 data components for the screen package.
 
 
+%package info
+Summary: info components for the screen package.
+Group: Default
+
+%description info
+info components for the screen package.
+
+
 %package license
 Summary: license components for the screen package.
 Group: Default
@@ -69,15 +73,10 @@ man components for the screen package.
 
 
 %prep
-mkdir .gnupg
-chmod 700 .gnupg
-gpg --homedir .gnupg --import %{SOURCE2}
-gpg --homedir .gnupg --status-fd 1 --verify %{SOURCE1} %{SOURCE0} > gpg.status
-grep -E '^\[GNUPG:\] (GOODSIG|EXPKEYSIG) 910832974A92A11C' gpg.status
-%setup -q -n screen-5.0.0
-cd %{_builddir}/screen-5.0.0
+%setup -q -n screen-5.0.1
+cd %{_builddir}/screen-5.0.1
 pushd ..
-cp -a screen-5.0.0 buildavx2
+cp -a screen-5.0.1 buildavx2
 popd
 
 %build
@@ -85,7 +84,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1747084156
+export SOURCE_DATE_EPOCH=1747319266
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -139,7 +138,7 @@ FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS"
 FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
 ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
-export SOURCE_DATE_EPOCH=1747084156
+export SOURCE_DATE_EPOCH=1747319266
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/screen
 cp %{_builddir}/screen-%{version}/COPYING %{buildroot}/usr/share/package-licenses/screen/0dd432edfab90223f22e49c02e2124f87d6f0a56 || :
@@ -157,9 +156,9 @@ GOAMD64=v2
 
 %files bin
 %defattr(-,root,root,-)
-/V3/usr/bin/screen-5.0.0
+/V3/usr/bin/screen-5.0.1
 /usr/bin/screen
-/usr/bin/screen-5.0.0
+/usr/bin/screen-5.0.1
 
 %files data
 %defattr(-,root,root,-)
@@ -181,6 +180,10 @@ GOAMD64=v2
 /usr/share/screen/utf8encodings/cc
 /usr/share/screen/utf8encodings/cd
 /usr/share/screen/utf8encodings/d6
+
+%files info
+%defattr(0644,root,root,0755)
+/usr/share/info/screen.info
 
 %files license
 %defattr(0644,root,root,0755)
